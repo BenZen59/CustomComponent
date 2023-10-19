@@ -1,4 +1,4 @@
-package fr.fs.customcomponent.controller;
+package fr.fs.customcomponent;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.layout.BorderPane;

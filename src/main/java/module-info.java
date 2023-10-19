@@ -3,6 +3,6 @@ module fr.fs.controllertextfield {
     requires javafx.fxml;
 
 
-    opens fr.fs.controllertextfield to javafx.fxml;
-    exports fr.fs.controllertextfield;
+    opens fr.fs.customcomponent to javafx.fxml;
+    exports fr.fs.customcomponent;
 }

@@ -1,2 +1,4 @@
-package fr.fs.customcomponent;public class Couleur {
+package fr.fs.customcomponent;
+
+public class Couleur {
 }
