@@ -5,23 +5,30 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TestApplication extends Application {
     @Override
     public void start(Stage stage) {
-        //ControllerTextField controllerTextField = new ControllerTextField();
-        ControllerListSelected controllerListSelected = new ControllerListSelected();
+
+        ListSelection controllerListSelected = new ListSelection();
+        List<Couleur> disponibleList = new ArrayList<>();
+        disponibleList.add(new Couleur("Abricot"));
+        disponibleList.add(new Couleur("Acajou"));
+        disponibleList.add(new Couleur("Aigue-marine"));
+        disponibleList.add(new Couleur("Amande"));
+        disponibleList.add(new Couleur("Amarante"));
+        List<Couleur> selectedList = new ArrayList<>();
+        selectedList.add(new Couleur("Aurore"));
+        selectedList.add(new Couleur("Avocat"));
+        controllerListSelected.setList(disponibleList, selectedList);
         VBox rootLayout = new VBox();
-        //rootLayout.getChildren().add(controllerTextField);
         rootLayout.getChildren().add(controllerListSelected);
         Scene scene = new Scene(rootLayout);
-        /*controllerTextField.setLabelText("Téléphone : ");
-        controllerTextField.setLabelError("OK !");
-        controllerTextField.setTextFieldWidth(90);
-        controllerTextField.setHorizontale(false);
-        controllerTextField.setParameters("Ok !","Erreur !","(?=.*[A-Z])(?=.*[a-z])(?=.*\\d)(?=.*\\W).{8,15}$");*/
+        scene.getStylesheets().add(getClass().getResource("style.css").toExternalForm());
         stage.setTitle("Custom Component");
         stage.setScene(scene);
-
         stage.show();
     }
 
