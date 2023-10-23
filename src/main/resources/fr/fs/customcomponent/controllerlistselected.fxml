@@ -42,7 +42,7 @@
                         <ListView fx:id="selectionneList" prefHeight="30.0" prefWidth="170.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <VBox prefHeight="314.0" prefWidth="6.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
-                              <Button fx:id="allSelectButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="150.0" prefWidth="75.0" text="&gt;&gt;" textAlignment="CENTER">
+                              <Button fx:id="allSelectButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectAll" prefHeight="150.0" prefWidth="75.0" text="&gt;&gt;" textAlignment="CENTER">
                                  <font>
                                     <Font size="24.0" />
                                  </font>
@@ -64,7 +64,7 @@
                                     <Insets left="4.0" />
                                  </VBox.margin>
                               </Button>
-                              <Button fx:id="unAllSelectButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="150.0" prefWidth="75.0" text="&lt;&lt;" textAlignment="CENTER">
+                              <Button fx:id="unAllSelectButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#unSelectAll" prefHeight="150.0" prefWidth="75.0" text="&lt;&lt;" textAlignment="CENTER">
                                  <VBox.margin>
                                     <Insets left="4.0" />
                                  </VBox.margin>

@@ -56,7 +56,13 @@ public class ListSelection<T> extends BorderPane {
     public void setList(List<T> disponibleList, List<T> selectedList) {
         bean.setList(disponibleList, selectedList);
     }
+    public void selectAll(){
+        bean.selectAll();
+    }
 
+    public void unSelectAll(){
+        bean.unSelectAll();
+    }
 
 }
 

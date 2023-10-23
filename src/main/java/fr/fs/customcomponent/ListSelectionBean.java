@@ -22,11 +22,21 @@ public class ListSelectionBean<T> {
 
     public void setList(List<T> disponibleList, List<T> selectionneList){
         this.selectionneList.addAll(selectionneList);
-        for(T elemenentLu: disponibleList){
-            if(!this.selectionneList.contains(elemenentLu)){
-                this.disponibleList.add(elemenentLu);
+        for(T elementLu: disponibleList){
+            if(!this.selectionneList.contains(elementLu)){
+                this.disponibleList.add(elementLu);
             }
         }
+    }
+
+    public void selectAll(){
+        selectionneList.addAll(disponibleFiltered);
+        disponibleList.removeAll(disponibleFiltered);
+    }
+
+    public void unSelectAll(){
+        disponibleList.addAll(selectionneFiltered);
+        selectionneList.removeAll(selectionneFiltered);
     }
 
     public ObservableList<T> getDisponibleList() {
