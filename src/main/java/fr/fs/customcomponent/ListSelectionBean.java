@@ -29,6 +29,15 @@ public class ListSelectionBean<T> {
         }
     }
 
+    public void select(T item){
+        selectionneList.add(item);
+        disponibleList.remove(item);
+    }
+
+     public void unSelect(T item){
+        disponibleList.add(item);
+        selectionneList.remove(item);
+     }
     public void selectAll(){
         selectionneList.addAll(disponibleFiltered);
         disponibleList.removeAll(disponibleFiltered);
