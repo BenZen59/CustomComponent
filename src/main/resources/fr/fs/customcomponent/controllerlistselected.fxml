@@ -21,7 +21,7 @@
          <children>
             <AnchorPane prefHeight="200.0" prefWidth="412.0">
                <children>
-                  <TextField fx:id="filterField" layoutX="64.0" layoutY="6.0" prefHeight="38.0" prefWidth="327.0" AnchorPane.topAnchor="10.0" />
+                  <TextField fx:id="filterField" layoutX="64.0" layoutY="6.0" onDragDropped="#dragDrop" onDragOver="#dragOver" onKeyTyped="#filter" prefHeight="38.0" prefWidth="327.0" AnchorPane.topAnchor="10.0" />
                   <Label fx:id="filterLabel" layoutX="14.0" layoutY="12.0" text="Filter" AnchorPane.topAnchor="15.0">
                      <font>
                         <Font size="18.0" />
@@ -38,8 +38,8 @@
                       <RowConstraints maxHeight="298.0" minHeight="10.0" prefHeight="275.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <ListView fx:id="disponibleList" prefHeight="271.0" prefWidth="145.0" GridPane.rowIndex="1" />
-                        <ListView fx:id="selectionneList" prefHeight="30.0" prefWidth="170.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <ListView fx:id="disponibleList" onDragDetected="#dragStart" onDragDropped="#dragDropSelect" onDragOver="#dragOverSelect" onMouseClicked="#itemClick" prefHeight="271.0" prefWidth="145.0" GridPane.rowIndex="1" />
+                        <ListView fx:id="selectionneList" onDragDetected="#dragStartSelect" onDragDropped="#dragDrop" onDragOver="#dragOver" onMouseClicked="#unItemClick" prefHeight="30.0" prefWidth="170.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                         <VBox prefHeight="314.0" prefWidth="6.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                            <children>
                               <Button fx:id="allSelectButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#selectAll" prefHeight="150.0" prefWidth="75.0" text="&gt;&gt;" textAlignment="CENTER">

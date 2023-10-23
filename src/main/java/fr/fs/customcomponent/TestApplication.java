@@ -19,9 +19,12 @@ public class TestApplication extends Application {
         disponibleList.add(new Couleur("Aigue-marine"));
         disponibleList.add(new Couleur("Amande"));
         disponibleList.add(new Couleur("Amarante"));
+        disponibleList.add(new Couleur("Bleu"));
+        disponibleList.add(new Couleur("Bleu marine"));
         List<Couleur> selectedList = new ArrayList<>();
         selectedList.add(new Couleur("Aurore"));
         selectedList.add(new Couleur("Avocat"));
+
         controllerListSelected.setList(disponibleList, selectedList);
         VBox rootLayout = new VBox();
         rootLayout.getChildren().add(controllerListSelected);

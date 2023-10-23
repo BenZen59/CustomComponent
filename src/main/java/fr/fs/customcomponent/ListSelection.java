@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 
@@ -50,6 +51,9 @@ public class ListSelection<T> extends BorderPane {
         bean = new ListSelectionBean<>();
         this.disponibleList.setItems(bean.getDisponibleList());
         this.selectionneList.setItems(bean.getSelectionneList());
+        filterField.textProperty().addListener((observable, oldValue, newValue) -> {
+            bean.filter(newValue);
+        });
 
     }
 
@@ -77,6 +81,112 @@ public class ListSelection<T> extends BorderPane {
 
     public void unSelectAll() {
         bean.unSelectAll();
+    }
+
+    public void filter(KeyEvent event) {
+        String filterText = filterField.getText();
+        bean.filter(filterText);
+        disponibleList.refresh();
+        selectionneList.refresh();
+    }
+
+    public void itemClick() {
+        disponibleList.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                select();
+            }
+            if (event.getClickCount() == 3) {
+                selectAll();
+            }
+
+        });
+    }
+
+    public void unItemClick() {
+        selectionneList.setOnMouseClicked(event -> {
+            if (event.getClickCount() == 2) {
+                unSelect();
+            }
+            if (event.getClickCount() == 3) {
+                unSelectAll();
+            }
+
+        });
+    }
+
+    public void dragStart() {
+        disponibleList.setOnDragDetected(DragEvent -> {
+            T selectedItem = disponibleList.getSelectionModel().getSelectedItem();
+            final Dragboard dragboard = disponibleList.startDragAndDrop(TransferMode.MOVE);
+            final ClipboardContent content = new ClipboardContent();
+            content.putString(selectedItem.toString());
+            dragboard.setContent(content);
+            DragEvent.consume();
+        });
+    }
+
+    public void dragOver() {
+        selectionneList.setOnDragOver(DragEvent -> {
+            if (DragEvent.getGestureSource() == disponibleList &&
+                    disponibleList.getSelectionModel().getSelectedItems().size() == 1) {
+                DragEvent.acceptTransferModes(TransferMode.MOVE);
+            }
+            DragEvent.consume();
+        });
+    }
+
+    public void dragDrop() {
+        selectionneList.setOnDragDropped(DragEvent -> {
+            Dragboard dragboard = DragEvent.getDragboard();
+            boolean success = false;
+
+            if (dragboard.hasString()) {
+                String text = dragboard.getString();
+                select();
+
+                success = true;
+            }
+
+            DragEvent.setDropCompleted(success);
+            DragEvent.consume();
+        });
+    }
+
+    public void dragStartSelect() {
+        selectionneList.setOnDragDetected(DragEvent -> {
+            T selectedItem = selectionneList.getSelectionModel().getSelectedItem();
+            final Dragboard dragboard = selectionneList.startDragAndDrop(TransferMode.MOVE);
+            final ClipboardContent content = new ClipboardContent();
+            content.putString(selectedItem.toString());
+            dragboard.setContent(content);
+            DragEvent.consume();
+        });
+    }
+
+    public void dragOverSelect() {
+        disponibleList.setOnDragOver(DragEvent -> {
+            if (DragEvent.getGestureSource() == selectionneList &&
+                    selectionneList.getSelectionModel().getSelectedItems().size() == 1) {
+                DragEvent.acceptTransferModes(TransferMode.MOVE);
+            }
+            DragEvent.consume();
+        });
+    }
+
+    public void dragDropSelect() {
+        disponibleList.setOnDragDropped(DragEvent -> {
+            Dragboard dragboard = DragEvent.getDragboard();
+            boolean success = false;
+
+            if (dragboard.hasString()) {
+                String text = dragboard.getString();
+                unSelect();
+                success = true;
+            }
+
+            DragEvent.setDropCompleted(success);
+            DragEvent.consume();
+        });
     }
 
 }

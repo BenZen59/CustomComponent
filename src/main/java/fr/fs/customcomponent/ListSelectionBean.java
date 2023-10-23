@@ -20,32 +20,53 @@ public class ListSelectionBean<T> {
         this.selectionneFiltered = new FilteredList<>(selectionneList);
     }
 
-    public void setList(List<T> disponibleList, List<T> selectionneList){
+    public void setList(List<T> disponibleList, List<T> selectionneList) {
         this.selectionneList.addAll(selectionneList);
-        for(T elementLu: disponibleList){
-            if(!this.selectionneList.contains(elementLu)){
+        for (T elementLu : disponibleList) {
+            if (!this.selectionneList.contains(elementLu)) {
                 this.disponibleList.add(elementLu);
             }
         }
     }
 
-    public void select(T item){
+    public void select(T item) {
         selectionneList.add(item);
         disponibleList.remove(item);
     }
 
-     public void unSelect(T item){
+    public void unSelect(T item) {
         disponibleList.add(item);
         selectionneList.remove(item);
-     }
-    public void selectAll(){
+    }
+
+    public void selectAll() {
         selectionneList.addAll(disponibleFiltered);
         disponibleList.removeAll(disponibleFiltered);
     }
 
-    public void unSelectAll(){
+    public void unSelectAll() {
         disponibleList.addAll(selectionneFiltered);
         selectionneList.removeAll(selectionneFiltered);
+    }
+
+    public void filter(String filterText) {
+        String filterTextLower = filterText.toLowerCase();
+
+        disponibleFiltered.setPredicate(item -> {
+            if (filterTextLower.isEmpty()) {
+                return true; // Afficher tous les éléments si le champ de filtrage est vide.
+            }
+            String itemText = item.toString().toLowerCase();
+            return itemText.contains(filterTextLower); // Filtre exact (correspondance exacte).
+        });
+
+        selectionneFiltered.setPredicate(item -> {
+            if (filterTextLower.isEmpty()) {
+                return true; // Afficher tous les éléments si le champ de filtrage est vide.
+            }
+            String itemText = item.toString().toLowerCase();
+            return itemText.contains(filterTextLower); // Filtre exact (correspondance exacte).
+        });
     }
 
     public ObservableList<T> getDisponibleList() {
