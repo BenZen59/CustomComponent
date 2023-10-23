@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<fx:root prefWidth="412.0" type="BorderPane" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="412.0">
+         <children>
+            <AnchorPane prefHeight="200.0" prefWidth="412.0">
+               <children>
+                  <TextField fx:id="filterField" layoutX="64.0" layoutY="6.0" prefHeight="38.0" prefWidth="327.0" AnchorPane.topAnchor="10.0" />
+                  <Label fx:id="filterLabel" layoutX="14.0" layoutY="12.0" text="Filter" AnchorPane.topAnchor="15.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <GridPane layoutX="20.0" layoutY="64.0" prefHeight="314.0" prefWidth="372.0" AnchorPane.bottomAnchor="-178.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="64.0">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="151.3999786376953" minWidth="10.0" prefWidth="151.3999786376953" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="138.8000244140625" minWidth="10.0" prefWidth="88.20002136230468" />
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="263.1999755859375" minWidth="10.0" prefWidth="151.39999999999998" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints maxHeight="152.0" minHeight="10.0" prefHeight="39.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="298.0" minHeight="10.0" prefHeight="275.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <ListView fx:id="disponibleList" prefHeight="271.0" prefWidth="145.0" GridPane.rowIndex="1" />
+                        <ListView fx:id="selectionneList" prefHeight="30.0" prefWidth="170.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                        <VBox prefHeight="314.0" prefWidth="6.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <children>
+                              <Button fx:id="allSelectButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="150.0" prefWidth="75.0" text="&gt;&gt;" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <VBox.margin>
+                                    <Insets left="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="selectButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="150.0" prefWidth="75.0" text="&gt;" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <VBox.margin>
+                                    <Insets left="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                              <Button fx:id="unAllSelectButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="150.0" prefWidth="75.0" text="&lt;&lt;" textAlignment="CENTER">
+                                 <VBox.margin>
+                                    <Insets left="4.0" />
+                                 </VBox.margin>
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                              </Button>
+                              <Button fx:id="unSelectButton" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="150.0" prefWidth="75.0" text="&lt;" textAlignment="CENTER">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <effect>
+                                    <DropShadow />
+                                 </effect>
+                                 <VBox.margin>
+                                    <Insets left="4.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                        </VBox>
+                        <TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" prefHeight="53.0" prefWidth="145.0" text="Disponible">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TitledPane>
+                        <TitledPane alignment="CENTER" collapsible="false" contentDisplay="CENTER" prefHeight="47.0" prefWidth="145.0" text="Selectionné" GridPane.columnIndex="2">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </TitledPane>
+                     </children>
+                  </GridPane>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </center>
+</fx:root>
