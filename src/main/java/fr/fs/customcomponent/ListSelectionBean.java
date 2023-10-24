@@ -51,21 +51,12 @@ public class ListSelectionBean<T> {
 
     public void filter(String filterText) {
         String filterTextLower = filterText.toLowerCase();
-
         disponibleFiltered.setPredicate(item -> {
-            if (filterTextLower.isEmpty()) {
-                return true; // Afficher tous les éléments si le champ de filtrage est vide.
-            }
-            String itemText = item.toString().toLowerCase();
-            return itemText.contains(filterTextLower); // Filtre exact (correspondance exacte).
+            return item.toString().toLowerCase().contains(filterTextLower);
         });
 
         selectionneFiltered.setPredicate(item -> {
-            if (filterTextLower.isEmpty()) {
-                return true; // Afficher tous les éléments si le champ de filtrage est vide.
-            }
-            String itemText = item.toString().toLowerCase();
-            return itemText.contains(filterTextLower); // Filtre exact (correspondance exacte).
+            return item.toString().toLowerCase().contains(filterTextLower);
         });
     }
 
