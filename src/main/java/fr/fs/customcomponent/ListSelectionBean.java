@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ListSelectionBean<T> {
@@ -61,10 +62,10 @@ public class ListSelectionBean<T> {
     }
 
     public ObservableList<T> getDisponibleList() {
-        return disponibleList;
+        return disponibleFiltered;
     }
 
     public ObservableList<T> getSelectionneList() {
-        return selectionneList;
+        return selectionneFiltered;
     }
 }

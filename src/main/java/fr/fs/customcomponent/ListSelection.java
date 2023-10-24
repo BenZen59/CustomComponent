@@ -53,8 +53,8 @@ public class ListSelection<T> extends BorderPane {
         this.selectionneList.setItems(bean.getSelectionneList());
         filterField.textProperty().addListener((observable, oldValue, newValue) -> {
             bean.filter(newValue);
-        });
 
+        });
     }
 
     public void setList(List<T> disponibleList, List<T> selectedList) {
@@ -81,13 +81,6 @@ public class ListSelection<T> extends BorderPane {
 
     public void unSelectAll() {
         bean.unSelectAll();
-    }
-
-    public void filter(KeyEvent event) {
-        String filterText = filterField.getText();
-        bean.filter(filterText);
-        disponibleList.refresh();
-        selectionneList.refresh();
     }
 
     public void itemClick() {
